@@ -16,13 +16,14 @@ export default function About() {
           >
             ABOUT US
           </motion.p>
+
           <motion.h1
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
             className="font-['Space_Grotesk'] font-black uppercase text-5xl sm:text-7xl tracking-tighter italic text-[#FF4D00] leading-none mb-6"
           >
-            HOW CAN ART<br />BE EMPTY?
+            WHY <br />EMPTY ART EXISTS
           </motion.h1>
           <motion.div
             initial={{ scaleX: 0 }}
@@ -36,29 +37,87 @@ export default function About() {
             transition={{ delay: 0.4 }}
             className="text-white/70 text-lg sm:text-xl max-w-2xl leading-relaxed font-['Space_Grotesk']"
           >
-            That curiosity is the starting point. Even the name <span className="text-[#FF4D00] font-bold">Empty Art</span> makes
-            you wonder. And that's exactly the point — this platform forces interaction,
-            pushes you to ask questions, and challenges you to see art not as a finished
-            object but as a <span className="text-[#00e3fd] font-bold">living experience</span>.
+            <p className="text-white/80 text-lg leading-relaxed font-['Space_Grotesk'] mb-6">
+                Empty Art started with a question — <span className="text-[#FF4D00] font-bold">why?</span>
+              </p>
+
+              <p className="text-white/70 text-lg leading-relaxed font-['Space_Grotesk'] mb-6">
+                Growing up, I was always curious. I asked questions about everything. But often,
+                the response was the same: <em>"just take it as it is."</em>
+              </p>
+
+              <p className="text-white/70 text-lg leading-relaxed font-['Space_Grotesk'] mb-6">
+                Over time, that does something to you. You stop asking. You start doubting yourself.
+                You begin to consume instead of create.
+              </p>
+
+              <p className="text-white/80 text-lg leading-relaxed font-['Space_Grotesk'] mb-6">
+                And that’s where the emptiness begins.
+              </p>
+
+              <p className="text-white/70 text-lg leading-relaxed font-['Space_Grotesk'] mb-6">
+                I remember drawing a house once. From the outside, it looked complete.
+                But inside… it was empty.
+              </p>
+
+              <p className="text-white/80 text-lg leading-relaxed font-['Space_Grotesk'] mb-6">
+                That’s when it hit me — maybe people are like that too.
+              </p>
+
+              <p className="text-white/70 text-lg leading-relaxed font-['Space_Grotesk'] mb-6">
+                We grow up in systems that tell us who to be, what to think, and how far we can go.
+                We are taught to accept, not to question.
+              </p>
+
+              <p className="text-white/80 text-lg leading-relaxed font-['Space_Grotesk'] mb-6">
+                So we look full on the outside… but inside, we feel empty.
+              </p>
+
+              <p className="text-white/80 text-lg leading-relaxed font-['Space_Grotesk']">
+                <span className="text-[#00e3fd] font-bold">Empty Art is a challenge.</span><br />
+                A challenge to stop, to question, to enter — and to discover that nothing is truly empty
+                unless you choose not to explore it.
+              </p>
           </motion.p>
         </div>
+
+
+        
       </section>
 
+
       <section className="py-16 px-6 sm:px-12 lg:px-20 border-t-4 border-[#1a1a1a]">
+        
+        <motion.h1
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.1 }}
+            className="font-['Space_Grotesk'] font-black uppercase text-5xl sm:text-7xl tracking-tighter italic text-[#FF4D00] leading-none mb-6"
+          >
+            ARE YOU EMPTY? <br />OR JUST UNEXPLORED?
+          </motion.h1>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ delay: 0.3 }}
+            className="h-1 w-40 bg-[#FF4D00] origin-left mb-8"
+          />
+
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-['Space_Grotesk'] font-black uppercase text-3xl sm:text-4xl tracking-tighter text-white mb-8">
-            MY MISSION
-          </h2>
+          <p className="text-white/80 text-lg leading-relaxed font-['Space_Grotesk'] mb-6">
+            This is not just an app. This is a response.
+          </p>
+
+          <p className="text-white/70 text-lg leading-relaxed font-['Space_Grotesk'] mb-6">
+            A response to being told not to ask questions.  
+            A response to doubting myself before even trying.  
+            A response to feeling like creativity had limits.
+          </p>
           <div className="bg-[#0e0e0e] border-4 border-[#FF4D00] p-8 sm:p-12 shadow-[8px_8px_0px_0px_#00e3fd]">
             <p className="text-white/80 text-lg leading-relaxed font-['Space_Grotesk'] mb-6">
-              My mission is to create an interactive application that shows within an artist's soul.
-              Here, you are going to witness artworks and engage with the creative process behind them.
-              The main purpose isn't just to understand the journey of an artist, but to help you
-              find <span className="text-[#00e3fd] font-bold">your own creative voice</span>.
-            </p>
-            <p className="text-white/80 text-lg leading-relaxed font-['Space_Grotesk']">
-              The goal is to show that art is not just a job or a finished product —
-              it is <span className="text-[#FF4D00] font-bold">identity</span>, and a tool for self-expression.
+              My mission is to create a space where curiosity is not suppressed but expected. where you don't just see art, you step into it, question it, and find yourdelf inside it.
+              <span className="text-[#00e3fd] font-bold"> Because this is bigger </span>than understanding the artist. It is about
+              it is <span className="text-[#FF4D00] font-bold">rediscovering</span> your own voice.
             </p>
           </div>
           <p className="text-white/40 text-sm font-['Space_Grotesk'] mt-4 uppercase tracking-wider">
@@ -83,9 +142,12 @@ export default function About() {
                 CONSUMPTION OVER CREATION
               </h3>
               <p className="text-white/60 leading-relaxed font-['Space_Grotesk']">
-                The youth admire art but can't find ways to engage with it in a meaningful way.
-                Education systems focus on consumption over creation, making the youth appreciate
-                art as something to observe or own — never to question or create.
+                We are raised to consume, not to question.
+                We scroll, we watch, we admire but we rarely stop and ask why
+              </p>
+              <p className="text-white/60 leading-relaxed font-['Space_Grotesk'] mt-4">
+                Over time, that turns creativity into something distant.  
+                Something we believe belongs to other people, not us.
               </p>
             </motion.div>
             <motion.div
@@ -99,9 +161,11 @@ export default function About() {
                 CURIOSITY WITHOUT GUIDANCE
               </h3>
               <p className="text-white/60 leading-relaxed font-['Space_Grotesk']">
-                The youth across Africa are curious, but a lack of guidance is killing their
-                ability to be creative. They observe and admire, but never ask <em>why</em> a
-                particular artwork was made or <em>how</em> — yet they interact with art every day.
+                The curiosity is there. It has always been there.
+              </p>
+              <p className="text-white/60 leading-relaxed font-['Space_Grotesk'] mt-4">
+                But without guidance, it fades.  
+                People stop asking questions because they were never shown how to explore the answers.
               </p>
             </motion.div>
             <motion.div
@@ -112,10 +176,12 @@ export default function About() {
             >
               <span className="material-symbols-outlined text-4xl text-[#FF4D00] mb-4 block">warning</span>
               <p className="text-white/60 leading-relaxed font-['Space_Grotesk'] text-lg">
-                Art is everywhere — schools, galleries, and social media — but it remains
-                without change if the youth don't stop and wonder <span className="text-[#FF4D00] font-bold">"why?"</span> or <span className="text-[#FF4D00] font-bold">"how?"</span>.
-                As long as these youth think that art is for others or too difficult to engage with,
-                we have failed as a community in aspects of self-expression and creativity.
+                The real problem is not that art is inaccessible. 
+                It is that people no longer believe they are allowed to engage with it.
+              </p>
+              <p className="text-white/60 leading-relaxed font-['Space_Grotesk'] text-lg mt-4">
+                As long as we think art is “not for us,” we disconnect from one of the most human things we have:
+                <span className="text-[#FF4D00] font-bold"> the ability to create and question.</span>
               </p>
             </motion.div>
           </div>
@@ -129,22 +195,25 @@ export default function About() {
           </h2>
           <div className="bg-[#0e0e0e] border-l-4 border-[#00e3fd] p-8 sm:p-12">
             <p className="text-white/80 text-lg leading-relaxed font-['Space_Grotesk'] mb-6">
-              In many African societies, art is seen as a tool to fill space — decoration.
-              In education, we are supposed to consume knowledge instead of creating, asking
-              questions, or expressing ourselves. Creativity is seen as <span className="text-[#FF4D00] font-bold italic">extra</span>,
-              <span className="text-[#FF4D00] font-bold italic"> too much</span>.
+              In many African environments, creativity is often seen as optional — something extra,
+              something you do after everything else is “serious.”
+            </p>
+            <p className="text-white/70 text-lg leading-relaxed font-['Space_Grotesk'] mb-6">
+              We are taught to follow paths, not to question them.  
+              To succeed, not to explore.
             </p>
             <p className="text-white/80 text-lg leading-relaxed font-['Space_Grotesk'] mb-6">
-              As a result, many people grow up disconnected from their own creativity, thinking
-              that art is something they aren't a part of — instead of something that
-              <span className="text-[#00e3fd] font-bold"> lives inside them</span>.
+              And slowly, people disconnect from their own imagination.
+              Not because they do not have it but because they were never allowed to trust it.
             </p>
+            <p className="text-white/80 text-lg leading-relaxed font-['Space_Grotesk'] mb-6">
+              That’s how you end up with people who look complete on the outside,
+              but feel empty on the inside.
+            </p>
+
             <p className="text-white/80 text-lg leading-relaxed font-['Space_Grotesk']">
-              I use technology to exhibit art as living rather than an object. This project
-              challenges that mindset by proving that art is a human experience — it struggles,
-              grows, and has an identity. This approach helps the Youth remember that art is
-              not separate from who we are. <span className="text-[#FF4D00] font-bold">Art is us</span>,
-              and this project is a bridge to that truth.
+              This project challenges that.
+              <span className="text-[#00e3fd] font-bold"> It reminds people that creativity is not extra — it is human.</span>
             </p>
           </div>
         </div>
@@ -186,10 +255,10 @@ export default function About() {
       <section className="py-20 px-6 sm:px-12 lg:px-20 border-t-4 border-[#1a1a1a]">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-['Space_Grotesk'] font-black uppercase text-4xl sm:text-5xl tracking-tighter italic text-white mb-4">
-            THE CANVAS IS <span className="text-[#FF4D00]">EMPTY</span>.
+            NOTHING IS EVER <span className="text-[#FF4D00]">EMPTY</span>.
           </h2>
           <p className="text-white/50 text-lg font-['Space_Grotesk'] mb-10">
-            Fill it with something the world hasn't seen yet.
+            UNLESS you stop questioning it.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
