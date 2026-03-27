@@ -117,7 +117,7 @@ export default function About() {
             <p className="text-white/80 text-lg leading-relaxed font-['Space_Grotesk'] mb-6">
               My mission is to create a space where curiosity is not suppressed but expected. where you don't just see art, you step into it, question it, and find yourdelf inside it.
               <span className="text-[#00e3fd] font-bold"> Because this is bigger </span>than understanding the artist. It is about
-              it is <span className="text-[#FF4D00] font-bold">rediscovering</span> your own voice.
+              <span className="text-[#FF4D00] font-bold">rediscovering</span> your own voice.
             </p>
           </div>
           <p className="text-white/40 text-sm font-['Space_Grotesk'] mt-4 uppercase tracking-wider">
