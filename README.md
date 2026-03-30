@@ -1,48 +1,51 @@
 # EmptyArt
 
-A mini artwork social platform where users upload their artworks, discover other artists, and interact through likes, comments, bookmarks, and follows — like a simple Instagram for art.
+An artwork social platform where users upload their artworks, discover other artists, and interact through likes, comments, bookmarks, and follows.
 
 ## Tech Stack
 
 **Frontend:** React 19, Vite, Tailwind CSS 4, React Router 7, Motion (Framer Motion), React Hot Toast  
 **Backend:** Flask 3, Flask-SQLAlchemy, SQLite, PyJWT, Flask-CORS  
 **Auth:** JWT-based (stored in localStorage)
+**Nginx**
+**Gunicorn**
+
 
 ## Project Structure
 
 ```
 EmptyArt/
-├── backend/           # Flask API server
-│   ├── app.py         # App factory, CORS, blueprint registration
-│   ├── database.py    # SQLAlchemy models (User, Upload, Reaction, Follow)
-│   ├── helpers.py     # JWT token generation, auth decorators
+├── backend/          
+│   ├── app.py         
+│   ├── database.py    
+│   ├── helpers.py     
 │   ├── routes/
-│   │   ├── auth.py    # Register, login, current user
-│   │   ├── uploads.py # CRUD uploads, feed, user uploads
-│   │   ├── reactions.py # Like, comment, bookmark toggles
-│   │   ├── users.py   # Profiles, follow/unfollow, edit profile
-│   │   └── admin.py   # Admin: manage uploads, reactions, users
-│   ├── static/        # Uploaded images & API tester page
-│   ├── instance/      # SQLite database file
-│   ├── .env           # Backend environment variables
+│   │   ├── auth.py   
+│   │   ├── uploads.py
+│   │   ├── reactions.py
+│   │   ├── users.py  
+│   │   └── admin.py   
+│   ├── static/       
+│   ├── instance/     
+│   ├── .env          
 │   └── requirements.txt
-├── frontend/          # React SPA
+├── frontend/         
 │   ├── src/
-│   │   ├── App.jsx    # Routing & layout
-│   │   ├── api.js     # Centralized fetch wrapper with auth
+│   │   ├── App.jsx    
+│   │   ├── api.js     
 │   │   ├── components/
-│   │   │   ├── Landing.jsx    # Login/signup page
-│   │   │   ├── Feed.jsx       # Home feed (followed users' uploads)
-│   │   │   ├── Explore.jsx    # Browse all artworks
-│   │   │   ├── Profile.jsx    # User profile & upload grid
-│   │   │   ├── Upload.jsx     # Drag-and-drop image upload
-│   │   │   ├── Bookmarks.jsx  # Saved artworks
-│   │   │   ├── PostDetail.jsx # Lightbox modal with comments
-│   │   │   ├── AppNav.jsx     # Sidebar + mobile bottom nav
-│   │   │   ├── AdminDashboard.jsx # Admin panel
+│   │   │   ├── Landing.jsx  
+│   │   │   ├── Feed.jsx       
+│   │   │   ├── Explore.jsx    
+│   │   │   ├── Profile.jsx    
+│   │   │   ├── Upload.jsx     
+│   │   │   ├── Bookmarks.jsx  
+│   │   │   ├── PostDetail.jsx 
+│   │   │   ├── AppNav.jsx    
+│   │   │   ├── AdminDashboard.jsx 
 │   │   │   └── ...
 │   │   └── index.css
-│   ├── .env           # Frontend environment variables
+│   ├── .env          
 │   ├── package.json
 │   └── vite.config.js
 └── README.md
@@ -56,6 +59,13 @@ EmptyArt/
 - Node.js 18+
 - npm
 
+### Clone the project
+
+```bash
+git clone https://github.com/Darcy-02/EmptyA-app.git
+cd EmptyA-app
+```
+
 ### Backend Setup
 
 ```bash
@@ -63,16 +73,21 @@ cd backend
 
 # Create and activate a virtual environment
 python3 -m venv .venv
+
+#Linux/Mac:
 source .venv/bin/activate
+
+#Windows:
+.venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
 
 # Configure environment variables
-# Edit .env and set a strong SECRET_KEY for production
-cp .env.example .env  # or edit the existing .env
+SECRET_KEY=your-secret-key
+DATABASE_URI=sqlite:///emptyart.db
 
-# Run the server (creates the SQLite database automatically on first start)
+# Run the server
 python3 app.py
 ```
 
@@ -81,7 +96,7 @@ The API runs at **http://localhost:5000**. Visit it in your browser to use the b
 ### Frontend Setup
 
 ```bash
-cd frontend
+cd ../frontend
 
 # Install dependencies
 npm install
@@ -92,61 +107,96 @@ npm run dev
 
 The app runs at **http://localhost:5173**.
 
-### Environment Variables
+### How I deployed it on my server
+User -> Nginx -> React + Flask
 
-**backend/.env**
+### Run flask using Gunicorn
+```
+gunicorn -w 4 -b 127.0.0.1:5000 app:app
+(can only be accessed inside server)
+```
+### Build the app
+bash
+```
+npm run build
+```
 
-| Variable       | Description                      | Default                        |
-| -------------- | -------------------------------- | ------------------------------ |
-| `SECRET_KEY`   | JWT signing secret               | `dev-fallback-key`             |
-| `DATABASE_URI` | SQLAlchemy database URI          | `sqlite:///emptyart.db`        |
+### Edit Nginx Config
+Nginx
+```
+server {
+    listen 80;
+    server_name _;
 
-**frontend/.env**
+    location / {
+        root /home/lin/EmptyA-app/frontend/dist;
+        index index.html;
+        try_files $uri /index.html;
+    }
 
-| Variable       | Description           | Default                  |
-| -------------- | --------------------- | ------------------------ |
-| `VITE_API_URL` | Backend API base URL  | `http://localhost:5000`  |
+    location /api/ {
+        proxy_pass http://127.0.0.1:5000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+```
+This call "http://localhost:5000" won't work in production, instead change the frontend environment to this "VITE_API_URL=https://howler-01.tail595d00.ts.net"
 
-## Features
+### then rebuild
+bash
+```
+npm run build
+```
+### Access the live app on "https://howler-01.tail595d00.ts.net" thanks to Tailscale
 
-- **Auth** — Register, login, JWT-based session
-- **Upload** — Drag-and-drop artwork uploads with title & description
-- **Feed** — Personalized feed from followed users
-- **Explore** — Browse all artworks in a grid
-- **Profiles** — View/edit profile, avatar, bio, follower/following counts
-- **Reactions** — Like, comment, and bookmark artworks
-- **Follow System** — Follow/unfollow other users
-- **Lightbox** — Full-size image modal with comment thread
-- **Admin Panel** — Manage uploads, reactions, and user roles
-- **Dark Mode** — Dark-first UI with Tailwind
+### Problems I faced and how I fixed them:
+1. Images not working: fixed the API URL
+2. Nginx not working: fixed the config folder
+3. Frontend not connecting: rebuilt after env change
 
-## Contributing
+### Next Steps:
+1. Improve UI and
+2. add games
+3. add digital museum
+4. add a Calender for physical exhibitions taking place
+5. add direct messages and buying artwork
+6. add job openings for artists 
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/my-feature`
-3. Make your changes in the relevant directory (`backend/` or `frontend/`)
-4. Test your changes:
-   ```bash
-   # Frontend lint
-   cd frontend && npm run lint
+## Existing features
 
-   # Frontend build check
-   cd frontend && npm run build
+- **Auth** 
+- **Upload** 
+- **Feed** 
+- **Explore** 
+- **Profiles** 
+- **About**
+- **Reactions** 
+- **Follow System**  
+- **Admin Panel** 
+- **Dark Mode**
 
-   # Backend — verify imports
-   cd backend && source .venv/bin/activate && python3 -c "from app import app; print('OK')"
-   ```
-5. Commit with a descriptive message: `git commit -m "feat: add artwork filters"`
-6. Push and open a Pull Request
+### References
 
-### Contribution Guidelines
+Frontend
+React — https://react.dev/
+Vite — https://vitejs.dev/
+Tailwind CSS — https://tailwindcss.com/
+React Router — https://reactrouter.com/
+Framer Motion — https://www.framer.com/motion/
 
-- Keep backend routes in their respective blueprint files under `backend/routes/`
-- Frontend components go in `frontend/src/components/`
-- Use the centralized `api()` helper from `frontend/src/api.js` for all backend requests
-- Don't hardcode `localhost:5000` — use the `VITE_API_URL` env var via `api.js`
-- Test uploads and auth flows manually using the built-in API tester at `http://localhost:5000`
+Backend
+Flask — https://flask.palletsprojects.com/
+Flask-SQLAlchemy — https://flask-sqlalchemy.palletsprojects.com/
+SQLite — https://www.sqlite.org/
+PyJWT — https://pyjwt.readthedocs.io/
+Flask-CORS — https://flask-cors.readthedocs.io/
 
-## License
+Deployment & Server
+Nginx — https://nginx.org/
+Gunicorn — https://gunicorn.org/
+Tailscale — https://tailscale.com/
 
-This project is for educational purposes.
+Inspiration
+Pinterest - https://www.pinterest.com/
+
